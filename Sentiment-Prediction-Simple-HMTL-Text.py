@@ -19,8 +19,8 @@ from nltk.corpus import sentiwordnet as swn
 from sklearn.metrics import classification_report
 
 ########## Import Data ############
-o = open("E:/BDAP/Python/Python_Exam.csv","w") 
-data_sent = open ("E:/BDAP/Python/sample.html","r").read()
+o = open("Python_Exam.csv","w")  #### open a CSV
+data_sent = open ("Vehicle_Identifier.html","r").read()
 stop = stopwords.words('english')
 header = "no_words,stopwords,nouns,positive,negative,adjectives,car_name \n"
 o.write(header)
@@ -143,14 +143,14 @@ o.close()
 
 ##############  Classification ML #############
 
-df = pd.read_csv("E:/BDAP/Python/Python_Exam.csv")
+df = pd.read_csv("Python_Exam.csv")
 x= df[['no_words','stopwords','nouns','positive','negative','adjectives']]
 y = df['car_name ']
 
-x_train, x_cv, y_train, y_cv = train_test_split(x,y)
+x_train, x_test, y_train, y_test = train_test_split(x,y)
 model=SVC()
 model.fit(x_train,y_train)
-predicted=model.predict(x_cv)
-expected=y_cv
+predicted=model.predict(x_test)
+expected=y_test
 print (metrics.confusion_matrix(expected,predicted))
 print (classification_report(expected,predicted))
