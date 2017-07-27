@@ -4,7 +4,7 @@ Created on Tue May 16 14:02:54 2017
 
 @author: Alex
 """
-
+########## Import Package ##########
 import nltk
 from nltk.tokenize import sent_tokenize, word_tokenize
 from nltk.corpus import stopwords
@@ -18,6 +18,7 @@ from sklearn import metrics
 from nltk.corpus import sentiwordnet as swn
 from sklearn.metrics import classification_report
 
+########## Import Data ############
 o = open("E:/BDAP/Python/Python_Exam.csv","w") 
 data_sent = open ("E:/BDAP/Python/sample.html","r").read()
 stop = stopwords.words('english')
@@ -80,9 +81,10 @@ for i in range(len(train_data)):
             car.append(train_data[i])
 print(noun)
 print(car)
-postag(str(noun))'''
+postag(str(noun))
+'''
       
-
+########## Creating Features ############
 for i in range(len(sent)):
     pos = 0
     neu = 0
@@ -139,6 +141,7 @@ for i in range(len(sent)):
     o.write(str(output))
 o.close()
 
+##############  Classification ML #############
 
 df = pd.read_csv("E:/BDAP/Python/Python_Exam.csv")
 x= df[['no_words','stopwords','nouns','positive','negative','adjectives']]
