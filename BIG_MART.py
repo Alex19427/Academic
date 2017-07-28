@@ -24,8 +24,8 @@ from keras.optimizers import SGD, Adam
 
 
 ### Importing the Data
-train_set = pd.read_csv("E:/BDAP/Datasets/AV Meetup Problem/BIG_MART_Trainset.csv",header=0)
-test_set = pd.read_csv("E:/BDAP/Datasets/AV Meetup Problem/BIG_MART_Testset.csv",header=0)
+train_set = pd.read_csv("BIG_MART_Trainset.csv",header=0)
+test_set = pd.read_csv("BIG_MART_Testset.csv",header=0)
 train_set.head()
 train_set.describe()
 
@@ -257,7 +257,7 @@ predicts = model.predict(test)
 model6 = pd.DataFrame(predicts,columns=['NNetwork predict'])
 
 test_final = pd.concat((model2,model1,model3,model4),axis=1)
-test_final.to_csv("E:/BDAP/Datasets/AV Meetup Problem/file1.csv")
+test_final.to_csv("Big_Mart_final.csv")
 
 
 
